@@ -18,7 +18,7 @@ import { icons } from '../component/icon/icons/index'
 const BoardListScreen = () => {
     const insets = useSafeAreaInsets();
     const [selectedId, setSelectedId] = useState(null);
-    const [arrBoards, setArrBords] = useState([
+    const arrBoards = [
         {
             id: 1,
             title: 'ICSE',
@@ -138,7 +138,7 @@ const BoardListScreen = () => {
             width: 317,
             height: 325,
             marginTop: -18
-        }]);
+        }];
 
     const BoardView = (item, index) => {
         return (
@@ -150,13 +150,25 @@ const BoardListScreen = () => {
                 }}
             >
                 <View style={styles.gridView}>
-                    <Image style={{
-                        resizeMode: 'center',
-                        position: 'absolute',
-                        width: item.width,
-                        height: item.height,
-                        ...item.id === selectedId ? { tintColor: 'rgb(1, 32, 96)' } : {}
-                    }} source={item.image}></Image>
+                    {
+                        item.id === selectedId ?
+                            <Image
+                                key={1}
+                                style={{
+                                    ...styles.selectedImage,
+                                    width: item.width,
+                                    height: item.height
+                                }}
+                                source={item.image}></Image> :
+                            <Image
+                                key={2}
+                                style={{
+                                    ...styles.nonSelectedImage,
+                                    width: item.width,
+                                    height: item.height
+                                }}
+                                source={item.image}></Image>
+                    }
                     <View style={{ marginTop: item.marginTop, marginLeft: -12 }}>
                         <Text style={{
                             ...styles.titleText,
@@ -172,9 +184,6 @@ const BoardListScreen = () => {
 
         )
     }
-
-
-
     return (
         <SafeAreaView style={styles.mainView}>
 
@@ -190,7 +199,7 @@ const BoardListScreen = () => {
                 data={arrBoards}
                 keyExtractor={(item, index) => index}
                 numColumns={2}
-                extraData={selectedId}
+                //extraData={selectedId}
                 renderItem={
                     ({ item, index }) => (
                         BoardView(item, index)
@@ -225,6 +234,19 @@ const BoardListScreen = () => {
 }
 
 const styles = StyleSheet.create({
+    selectedImage: {
+        resizeMode: 'center',
+        position: 'absolute',
+        // width: 275,
+        // height: 212,
+        tintColor: 'rgb(1, 32, 96)'
+    },
+    nonSelectedImage: {
+        resizeMode: 'center',
+        position: 'absolute',
+        // width: 275,
+        // height: 212,
+    },
     nextContainer: {
         flexDirection: 'row',
         justifyContent: 'center',

@@ -90,14 +90,15 @@ const styles = StyleSheet.create({
     viewLearnTextContainer: {
         position: 'absolute',
         height: screenHeight * 0.253,
-        left: screenWidth * 0.1824,
+        left: screenWidth * 0.169,
         flexDirection: 'column'
     },
     learnText: {
         color: 'rgb(50, 97, 155)',
         fontSize: 18,
         fontFamily: 'Poppins-ExtraBold',
-        top: screenHeight * 0.0993
+        top: screenHeight * 0.0993,
+        alignSelf:'center'
     },
     viewTechContainer: {
         width: screenWidth * 0.557,
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
         marginTop: screenHeight * 0.031897
     },
     subTextStyle: {
-        color: 'rgb(162, 172, 89)',
+        color: 'rgb(162, 172, 189)',
         fontSize: 10,
         fontFamily: 'Poppins-Medium',
         top: screenHeight * 0.0993
